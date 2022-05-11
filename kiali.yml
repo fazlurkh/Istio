@@ -161,7 +161,6 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            
             - name: GF_PATHS_DATA
               value: /var/lib/grafana/
             - name: GF_PATHS_LOGS
@@ -206,9 +205,7 @@ spec:
             name: istio-services-grafana-dashboards
         - name: storage
           emptyDir: {}
-
 ---
-
 apiVersion: v1
 data:
   istio-performance-dashboard.json: |
@@ -220,9 +217,7 @@ metadata:
   creationTimestamp: null
   name: istio-grafana-dashboards
   namespace: istio-system
-
 ---
-
 apiVersion: v1
 data:
   istio-extension-dashboard.json: |
@@ -1228,8 +1223,7 @@ spec:
     name: http-zipkin
   selector:
     app: jaeger
-    ---
-    ---
+---
 # Source: kiali-server/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -1245,7 +1239,6 @@ metadata:
     app.kubernetes.io/version: "v1.45.0"
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: "kiali"
-...
 ---
 # Source: kiali-server/templates/configmap.yaml
 apiVersion: v1
@@ -1342,7 +1335,6 @@ data:
       metrics_port: 9090
       port: 20001
       web_root: /kiali
-...
 ---
 # Source: kiali-server/templates/role-viewer.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1439,7 +1431,6 @@ rules:
   - tokenreviews
   verbs:
   - create
-...
 ---
 # Source: kiali-server/templates/role.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1546,7 +1537,6 @@ rules:
   - tokenreviews
   verbs:
   - create
-...
 ---
 # Source: kiali-server/templates/rolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1570,7 +1560,6 @@ subjects:
 - kind: ServiceAccount
   name: kiali
   namespace: istio-system
-...
 ---
 # Source: kiali-server/templates/role-controlplane.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1603,7 +1592,6 @@ rules:
   - get
   - list
   - watch
-...
 ---
 # Source: kiali-server/templates/rolebinding-controlplane.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1628,7 +1616,6 @@ subjects:
 - kind: ServiceAccount
   name: kiali
   namespace: istio-system
-...
 ---
 # Source: kiali-server/templates/service.yaml
 apiVersion: v1
@@ -1658,7 +1645,6 @@ spec:
   selector:
     app.kubernetes.io/name: kiali
     app.kubernetes.io/instance: kiali
-...
 ---
 # Source: kiali-server/templates/deployment.yaml
 apiVersion: apps/v1
@@ -1782,7 +1768,6 @@ spec:
         configMap:
           name: kiali-cabundle
           optional: true
----
 ---
 # Source: prometheus/templates/server/serviceaccount.yaml
 apiVersion: v1
